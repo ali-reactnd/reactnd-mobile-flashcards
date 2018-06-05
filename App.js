@@ -1,10 +1,17 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import store from './store';
 
 const DeckListView = ({ navigation }) => (
     <View>
         <Text>This is the Deck List view</Text>
+
+        {
+
+        }
+
         <TouchableOpacity onPress={() => navigation.navigate('DeckView')}>
             <Text>Press here for the Deck View</Text>
         </TouchableOpacity>
@@ -73,7 +80,9 @@ const Stack = createStackNavigator({
 export default class App extends React.Component {
     render() {
         return (
-            <Stack />
+            <Provider store={store}>
+                <Stack />
+            </Provider>
         );
     }
 }

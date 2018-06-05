@@ -1,9 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-const DeckListView = () => (
+const DeckListView = ({ navigation }) => (
     <View>
         <Text>This is the Deck List view</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('DeckView')}>
+            <Text>Press here for the Deck View</Text>
+        </TouchableOpacity>
     </View>
 );
 
@@ -33,26 +37,52 @@ const NewQuestionView = () => (
     </View>
 );
 
+const Stack = createStackNavigator({
+    Home: {
+        screen: DeckListView,
+        navigationOptions: {
+            title: "DECKS"
+        }
+    },
+    DeckView: {
+        screen: DeckView,
+        navigationOptions: {
+            title: "DECK"
+        }
+    },
+    QuizView: {
+        screen: QuizView,
+        navigationOptions: {
+            title: "Quiz"
+        }
+    },
+    NewDeckView: {
+        screen: NewDeckView,
+        navigationOptions: {
+            title: "New Deck"
+        }
+    },
+    NewQuestionView: {
+        screen: NewQuestionView,
+        navigationOptions: {
+            title: "Add Card"
+        }
+    }
+});
+
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>UdaciCards</Text>
-          <DeckListView/>
-          <DeckView/>
-          <QuizView/>
-          <NewDeckView/>
-          <NewQuestionView/>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <Stack />
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });

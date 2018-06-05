@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from "react-navigation";
-import { DeckView } from "./DeckView";
+import DeckView from "./DeckView";
 import DeckListView from "./DeckListView";
 import { QuizView } from "./QuizView";
 import { NewDeckView } from "./NewDeckView";
@@ -15,9 +15,11 @@ const Stack = createStackNavigator({
     },
     DeckView: {
         screen: DeckView,
-        navigationOptions: {
-            title: "DECK"
-        }
+
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.params.title}`,
+        }),
+
     },
     QuizView: {
         screen: QuizView,

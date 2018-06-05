@@ -12,7 +12,9 @@ const DeckListView = (props) => {
                 Object.keys(decks).map( key =>  {
                     let deck = decks[key];
                     return (
-                        <TouchableOpacity key={key} onPress={() => navigation.navigate('DeckView')}>
+                        <TouchableOpacity key={key} onPress={() =>
+                            navigation.navigate('DeckView', {key: key, title: deck.title})}
+                        >
                             <Text>
                                 {deck.title}
                             </Text>
@@ -21,8 +23,8 @@ const DeckListView = (props) => {
                 })
             }
         </View>
-    )
-}
+    );
+};
 
 const mapStateToProps = (state = {}) => {
     return {decks: {...state}};

@@ -1,16 +1,31 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native'
+import { connect } from "react-redux";
 
-export const DeckListView = ({navigation}) => (
-    <View>
-        <Text>This is the Deck List view</Text>
+const DeckListView = (props) => {
 
-        {
+    let {navigation, decks} = props;
 
-        }
+    return (
+        <View>
+            {
+                Object.keys(decks).map( key =>  {
+                    let deck = decks[key];
+                    return (
+                        <TouchableOpacity key={key} onPress={() => navigation.navigate('DeckView')}>
+                            <Text>
+                                {deck.title}
+                            </Text>
+                        </TouchableOpacity>
+                    );
+                })
+            }
+        </View>
+    )
+}
 
-        <TouchableOpacity onPress={() => navigation.navigate('DeckView')}>
-            <Text>Press here for the Deck View</Text>
-        </TouchableOpacity>
-    </View>
-);
+const mapStateToProps = (state = {}) => {
+    return {decks: {...state}};
+};
+
+export default connect(mapStateToProps, null)(DeckListView);

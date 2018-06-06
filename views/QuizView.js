@@ -65,8 +65,13 @@ class QuizView extends React.Component {
             <View style={styles.container}>
                 <Text style={styles.titleWithPadding}>{`Your score: ${percentage}%`}</Text>
                 <Button
+                    onPress={() => this.restartQuiz()}
+                    title="Restart Quiz"
+                />
+                <Text/>
+                <Button
                     onPress={() => this.props.navigation.goBack()}
-                    title="Ok"
+                    title="Back To Deck"
                     color="#A6ACAF"
                 />
             </View>
@@ -82,6 +87,14 @@ class QuizView extends React.Component {
             </View>
 
         )
+    }
+
+    restartQuiz = () => {
+        this.setState({
+            displayQuestion: true,
+            cardIDX: 0,
+            numCorrect: 0
+        });
     }
 
     displayButtons = () => {

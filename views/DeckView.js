@@ -26,6 +26,7 @@ const DeckView = (props) => {
                 onPress={() => navigation.navigate('QuizView', {key: key})}
                 title="Start Quiz"
                 color="#A6ACAF"
+                disabled = {!deck['questions'].length}
             />
         </View>
     );

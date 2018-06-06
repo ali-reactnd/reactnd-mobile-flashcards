@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity, Button} from 'react-native'
 import {connect} from "react-redux";
 import styles from '../components/styles';
+import { clearLocalNotification, setLocalNotification } from "../components/Notification";
 
 class QuizView extends React.Component {
 
@@ -60,6 +61,10 @@ class QuizView extends React.Component {
     }
 
     displayResult = () => {
+        // User finished a quiz, so
+        clearLocalNotification()
+            .then(setLocalNotification) // for tomorrow
+
         let percentage = this.state.numCorrect*100.0/this.state.questions.length;
         return(
             <View style={styles.container}>

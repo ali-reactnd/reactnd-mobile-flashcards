@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from "react-navigation";
 import DeckView from "./DeckView";
 import DeckListView from "./DeckListView";
-import { QuizView } from "./QuizView";
+import QuizView from "./QuizView";
 import NewDeckView from "./NewDeckView";
 import NewQuestionView from "./NewQuestionView";
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet } from 'react-native'
 import { connect } from "react-redux";
+import styles from '../components/styles';
 
 const DeckView = (props) => {
 
@@ -9,16 +10,22 @@ const DeckView = (props) => {
     const deck = decks[key];
 
     return (
-        <View>
-            <Text>{deck.title}</Text>
-            <Text>{`${deck['questions'].length} Questions`}</Text>
+        <View style={styles.container}>
+            <View style={styles.box}>
+                <Text style={styles.titleWithPadding}>{deck.title}</Text>
+                <Text style={styles.subTitleWithPadding}>
+                    {`${deck['questions'].length} Questions`}
+                </Text>
+            </View>
             <Button
                 onPress={() => navigation.navigate('NewQuestionView', {key: key})}
                 title="Add Card"
             />
+            <Text/>
             <Button
                 onPress={() => navigation.navigate('QuizView', {key: key})}
                 title="Start Quiz"
+                color="#A6ACAF"
             />
         </View>
     );

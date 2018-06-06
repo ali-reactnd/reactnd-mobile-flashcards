@@ -1,32 +1,37 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Button } from 'react-native'
 import { connect } from "react-redux";
+import styles from '../components/styles';
 
 const DeckListView = (props) => {
 
     let {navigation, decks} = props;
 
     return (
-        <View>
+        <View style={styles.container}>
             {
                 Object.keys(decks).map( key =>  {
                     let deck = decks[key];
                     return (
-                        <TouchableOpacity key={key} onPress={() =>
+                        <TouchableOpacity style={styles.box} key={key} onPress={() =>
                             navigation.navigate('DeckView', {key: key, title: deck.title})}>
-                            <Text>{deck.title}</Text>
-                            <Text>{`${deck['questions'].length} Questions`}</Text>
+                            <Text style={styles.title}>{deck.title}</Text>
+                            <Text style={styles.subTitle}>{`${deck['questions'].length} Questions`}</Text>
                         </TouchableOpacity>
                     );
                 })
             }
-            <Button
-                onPress={() => navigation.navigate('NewDeckView')}
-                title="Add Deck"
-            />
+            <View>
+                <Button
+                    onPress={() => navigation.navigate('NewDeckView')}
+                    title="Add Deck"
+                />
+            </View>
         </View>
     );
 };
+
+
 
 const mapStateToProps = (state = {}) => {
     return {decks: {...state}};

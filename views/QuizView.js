@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native'
+import {View, Text, TouchableOpacity, Button} from 'react-native'
 import {connect} from "react-redux";
+import styles from '../components/styles';
 
 class QuizView extends React.Component {
 
@@ -30,10 +31,10 @@ class QuizView extends React.Component {
         const {questions, cardIDX} = this.state;
         const question = questions[cardIDX].question;
         return(
-            <View>
-                <Text>{question}</Text>
+            <View style={styles.box}>
+                <Text style={styles.titleWithPadding}>{question}</Text>
                 <TouchableOpacity onPress={() => this.toggleDisplayMode() }>
-                    <Text>Answer</Text>
+                    <Text style={[styles.subTitleWithPadding, {color: '#3498DB'}]}>Show Answer</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -43,10 +44,10 @@ class QuizView extends React.Component {
         const {questions, cardIDX} = this.state;
         const answer = questions[cardIDX].answer;
         return(
-            <View>
-                <Text>{answer}</Text>
+            <View style={styles.box}>
+                <Text style={styles.titleWithPadding}>{answer}</Text>
                 <TouchableOpacity onPress={() => this.toggleDisplayMode() }>
-                    <Text>Question</Text>
+                    <Text style={[styles.subTitleWithPadding, {color: '#3498DB'}]}>Show Question</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -61,18 +62,26 @@ class QuizView extends React.Component {
     displayResult = () => {
         let percentage = this.state.numCorrect*100.0/this.state.questions.length;
         return(
-            <View>
-                <Text>{`Your score: %${percentage}`}</Text>
+            <View style={styles.container}>
+                <Text style={styles.titleWithPadding}>{`Your score: ${percentage}%`}</Text>
                 <Button
                     onPress={() => this.props.navigation.goBack()}
                     title="Ok"
+                    color="#A6ACAF"
                 />
             </View>
         )
     }
 
     displayProgress = () => {
-        return <Text>{`${this.state.cardIDX+1}/${this.state.questions.length}`}</Text>
+        return (
+            <View style={styles.box}>
+                <Text style={[styles.subTitle, {color: '#707B7C'}]}>
+                    {`Card ${this.state.cardIDX+1} (out of ${this.state.questions.length} cards):`}
+                </Text>
+            </View>
+
+        )
     }
 
     displayButtons = () => {
@@ -81,10 +90,13 @@ class QuizView extends React.Component {
                 <Button
                     onPress={() => this.incrementCorrect()}
                     title="Correct"
+                    color="#2ECC71"
                 />
+                <Text/>
                 <Button
                     onPress={() => this.gotoNextQuestion()}
                     title="Incorrect"
+                    color="#FF5733"
                 />
             </View>
         )
@@ -98,7 +110,7 @@ class QuizView extends React.Component {
             return this.displayResult();
         } else {
             return (
-                <View>
+                <View style={styles.container}>
                     {this.displayProgress()}
                     {this.state.displayQuestion ? this.displayQuestion() : this.displayAnswer()}
                     {this.displayButtons()}

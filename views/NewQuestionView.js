@@ -3,6 +3,7 @@ import { View, Text, Button, TextInput } from 'react-native'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addCard } from "../actions/actionCreators";
+import styles from '../components/styles';
 
 class NewQuestionView extends React.Component{
 
@@ -20,20 +21,20 @@ class NewQuestionView extends React.Component{
 
     render() {
         return (
-            <View>
-                <Text>Question:</Text>
+            <View style={styles.container}>
+                <Text style={styles.subTitle}>Question:</Text>
                 <TextInput
-                    style={{borderColor: 'gray', borderWidth: 1}}
+                    style={[styles.box, {padding: 10}]}
                     multiline = {true}
-                    numberOfLines = {4}
+                    numberOfLines = {5}
                     onChangeText={(text) => this.setState({question: text})}
                     value={this.state.question}
                 />
-                <Text>Answer:</Text>
+                <Text style={styles.subTitle}>Answer:</Text>
                 <TextInput
-                    style={{borderColor: 'gray', borderWidth: 1}}
+                    style={[styles.box, {padding: 10}]}
                     multiline = {true}
-                    numberOfLines = {4}
+                    numberOfLines = {5}
                     onChangeText={(text) => this.setState({answer: text})}
                     value={this.state.answer}
                 />

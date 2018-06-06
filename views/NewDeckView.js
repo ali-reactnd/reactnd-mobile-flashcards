@@ -3,6 +3,7 @@ import { View, Text, Button, TextInput } from 'react-native'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addDeck } from "../actions/actionCreators";
+import styles from '../components/styles';
 
 class NewDeckView extends React.Component{
 
@@ -19,10 +20,10 @@ class NewDeckView extends React.Component{
 
     render() {
         return (
-            <View>
-                <Text>What is the title of your new deck?</Text>
+            <View style={styles.container}>
+                <Text style={styles.subTitleWithPadding}>What is the title of your new deck?</Text>
                 <TextInput
-                    style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                    style={[styles.box, {padding: 10}]}
                     onChangeText={(text) => this.setState({title: text})}
                     value={this.state.title}
                 />

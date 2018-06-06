@@ -12,7 +12,8 @@ class NewDeckView extends React.Component{
     }
 
     handleSubmit = () => {
-        // TODO: key must be a camel-case version of title with no spaces
+        // TODO: key must be a camel-case version of title with no spaces.
+        // TODO: make sure title is not empty.
         let key = this.state.title;
         this.props.addDeck(this.state.title, key);
         this.props.navigation.goBack();

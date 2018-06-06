@@ -19,7 +19,7 @@ class QuizView extends React.Component {
     }
 
     gotoNextQuestion = () => {
-        this.setState({cardIDX: this.state.cardIDX+1})
+        this.setState({cardIDX: this.state.cardIDX+1, displayQuestion: true})
     }
 
     incrementCorrect = () => {

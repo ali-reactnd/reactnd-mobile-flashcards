@@ -4,7 +4,7 @@ import DeckView from "./DeckView";
 import DeckListView from "./DeckListView";
 import { QuizView } from "./QuizView";
 import NewDeckView from "./NewDeckView";
-import { NewQuestionView } from "./NewQuestionView";
+import NewQuestionView from "./NewQuestionView";
 
 const Stack = createStackNavigator({
     Home: {

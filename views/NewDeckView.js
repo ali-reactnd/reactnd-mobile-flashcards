@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addDeck } from "../actions/actionCreators";
 
-
-
 class NewDeckView extends React.Component{
 
     state = {
@@ -13,7 +11,9 @@ class NewDeckView extends React.Component{
     }
 
     handleSubmit = () => {
-        this.props.addDeck(this.state.title);
+        // TODO: key must be a camel-case version of title with no spaces
+        let key = this.state.title;
+        this.props.addDeck(this.state.title, key);
         this.props.navigation.goBack();
     }
 
@@ -33,8 +33,6 @@ class NewDeckView extends React.Component{
             </View>
         );
     }
-
-
 }
 
 

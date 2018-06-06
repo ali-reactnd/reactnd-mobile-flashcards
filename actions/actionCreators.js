@@ -8,7 +8,7 @@ export const addDeck = (title, key) => {
     })
 };
 
-export const addCard = ({deckKey, question, answer}) => {
+export const addCard = (deckKey, question, answer) => {
     return ({
         type: ADD_CARD,
         deckKey: deckKey,

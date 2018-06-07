@@ -32,7 +32,6 @@ const DeckListView = (props) => {
 };
 
 
-
 const mapStateToProps = (state = {}) => {
     return {decks: {...state}};
 };

@@ -11,11 +11,11 @@ class NewDeckView extends React.Component{
 
     state = {
         title: ""
-    }
+    };
 
     isTitleValid = (title) => {
         return title && title.trim();
-    }
+    };
 
     displayAlert = () => {
         return (
@@ -28,13 +28,13 @@ class NewDeckView extends React.Component{
                 { cancelable: false }
             )
         )
-    }
+    };
 
     generateKey = (title) => {
         let key = camelCase(title);
         let unique = randomString({length: 4});
         return key + "_" + unique;
-    }
+    };
 
     handleSubmit = () => {
         let title = this.state.title;
@@ -45,7 +45,7 @@ class NewDeckView extends React.Component{
         let key = this.generateKey(title);
         this.props.addDeck(title, key);
         this.props.navigation.navigate('DeckView', {key: key, title: title});
-    }
+    };
 
     render() {
         return (
@@ -65,10 +65,8 @@ class NewDeckView extends React.Component{
     }
 }
 
-
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators( {addDeck}, dispatch);
-}
-
+};
 
 export default connect(null, mapDispatchToProps)(NewDeckView);

@@ -10,14 +10,14 @@ class NewQuestionView extends React.Component{
     state = {
         question: "",
         answer: ""
-    }
+    };
 
     handleSubmit = () => {
         const key = this.props.navigation.getParam('key', 'NO-ID');
         const {question, answer} = this.state;
         this.props.addCard(key, question, answer);
         this.props.navigation.goBack();
-    }
+    };
 
     render() {
         return (
@@ -50,6 +50,6 @@ class NewQuestionView extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators( {addCard}, dispatch);
-}
+};
 
 export default connect(null, mapDispatchToProps)(NewQuestionView );

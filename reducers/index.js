@@ -1,6 +1,5 @@
 import { ADD_CARD, ADD_DECK } from '../actions/actionTypes';
 
-
 const decks = (state={}, action) => {
 
     switch(action.type) {
@@ -27,7 +26,6 @@ const decks = (state={}, action) => {
         default:
             return state;
     }
-
 };
 
 export default decks;

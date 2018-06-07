@@ -4,7 +4,6 @@ import { Notifications, Permissions } from 'expo';
 
 const NOTIFICATION_KEY = 'UdaciCards:notifications';
 
-
 export const createNotification = () => {
     return {
         title: 'Practice makes perfect!',

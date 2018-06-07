@@ -11,7 +11,7 @@ class QuizView extends React.Component {
         displayQuestion: true,
         cardIDX: 0,
         numCorrect: 0
-    }
+    };
 
     componentWillMount() {
         const {navigation, decks} = this.props;
@@ -21,12 +21,12 @@ class QuizView extends React.Component {
 
     gotoNextQuestion = () => {
         this.setState({cardIDX: this.state.cardIDX+1, displayQuestion: true})
-    }
+    };
 
     incrementCorrect = () => {
         this.setState({numCorrect: this.state.numCorrect+1});
         this.gotoNextQuestion();
-    }
+    };
 
     displayQuestion = () => {
         const {questions, cardIDX} = this.state;
@@ -39,7 +39,7 @@ class QuizView extends React.Component {
                 </TouchableOpacity>
             </View>
         )
-    }
+    };
 
     displayAnswer = () => {
         const {questions, cardIDX} = this.state;
@@ -52,13 +52,13 @@ class QuizView extends React.Component {
                 </TouchableOpacity>
             </View>
         )
-    }
+    };
 
     toggleDisplayMode = () => {
         this.state.displayQuestion?
             this.setState({displayQuestion: false}) :
             this.setState({displayQuestion: true})
-    }
+    };
 
     displayResult = () => {
         // User finished a quiz, so
@@ -81,7 +81,7 @@ class QuizView extends React.Component {
                 />
             </View>
         )
-    }
+    };
 
     displayProgress = () => {
         return (
@@ -92,7 +92,7 @@ class QuizView extends React.Component {
             </View>
 
         )
-    }
+    };
 
     restartQuiz = () => {
         this.setState({
@@ -100,7 +100,7 @@ class QuizView extends React.Component {
             cardIDX: 0,
             numCorrect: 0
         });
-    }
+    };
 
     displayButtons = () => {
         return(
@@ -118,7 +118,7 @@ class QuizView extends React.Component {
                 />
             </View>
         )
-    }
+    };
 
     render(){
 

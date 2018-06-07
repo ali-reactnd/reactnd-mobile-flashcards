@@ -33,6 +33,20 @@ To get started:
 
 ![Take quiz](./screenshots/quiz.png)
 
+## Known Issues
+
+### Navigating with `react-native-navigation`
+
+To reproduce the error:
+
+1. Open the App
+2. Press "Add Deck" (you will be taken to "Add Deck" view)
+3. Write a title and press "SUBMIT" (you will taken to "Individual Deck" view) 
+4. Press on "<-" icon on top left of the screen in the navigator header.
+
+* Erroneous behaviour: you will be taken back to the "Add Deck" view
+* Expected behaviour: you should have been taken back to the "Deck List" view.
+
 ## Contributing
 
 This is my submission for the final assessment project for Udacity's React Native course, developed by [React Training](https://reacttraining.com).

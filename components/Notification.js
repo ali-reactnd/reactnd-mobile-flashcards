@@ -8,7 +8,7 @@ const NOTIFICATION_KEY = 'MobileFlashCards:notifications';
 export const createNotification = () => {
     return {
         title: 'Practice makes perfect!',
-        body: "👋 don't forget to practice with your flashcards for today!",
+        body: "Your flashcards are waiting for you!",
         ios: {
             sound: true,
         },
@@ -33,6 +33,7 @@ export const setLocalNotification = () => {
             if (data === null) {
                 Permissions.askAsync(Permissions.NOTIFICATIONS)
                     .then(({ status }) => {
+                        console.log("Notification permissions granted.");
                         if (status === 'granted') {
                             Notifications.cancelAllScheduledNotificationsAsync()
 
@@ -40,6 +41,7 @@ export const setLocalNotification = () => {
                             tomorrow.setDate(tomorrow.getDate() + 1);
                             tomorrow.setHours(20);
                             tomorrow.setMinutes(0);
+                            // tomorrow = new Date().getTime() + 1000; // use it for testing!
 
                             Notifications.scheduleLocalNotificationAsync(
                                 createNotification(),

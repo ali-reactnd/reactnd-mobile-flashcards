@@ -15,7 +15,7 @@ const Stack = createStackNavigator({
     },
     DeckView: {
         screen: DeckView,
-
+        // TODO: goBack should always go back to DeckListView
         navigationOptions: ({ navigation }) => ({
             title: `${navigation.state.params.title}`,
         }),

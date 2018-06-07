@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, TextInput } from 'react-native'
+import { View, Text, Button, TextInput, Alert } from 'react-native'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addDeck } from "../actions/actionCreators";
@@ -11,10 +11,30 @@ class NewDeckView extends React.Component{
         title: ""
     }
 
+    isTitleValid = (title) => {
+        return !title || !title.trim();
+    }
+
+    displayAlert = () => {
+        return (
+            Alert.alert(
+                'Title is missing!',
+                'Please enter a title for the new deck.',
+                [
+                    {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ],
+                { cancelable: false }
+            )
+        )
+    }
+
     handleSubmit = () => {
         // TODO: key must be a camel-case version of title with no spaces.
-        // TODO: make sure title is not empty.
         let title = this.state.title;
+        if (!this.isTitleValid(title)){
+            this.displayAlert();
+            return;
+        }
         let key = this.state.title;
         this.props.addDeck(title, key);
         this.props.navigation.navigate('DeckView', {key: key, title: title});

@@ -7,7 +7,6 @@ const decks = (state={}, action) => {
 
         case ADD_DECK:
             return (
-                // TODO: handle situation where there is already a questions with this key
                 {...state, [action.key]: {title: action.title, questions: []} }
             );
 

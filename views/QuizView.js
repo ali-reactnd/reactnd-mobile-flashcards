@@ -65,7 +65,7 @@ class QuizView extends React.Component {
         clearLocalNotification()
             .then(setLocalNotification) // for tomorrow
 
-        let percentage = this.state.numCorrect*100.0/this.state.questions.length;
+        let percentage = Math.round(this.state.numCorrect*100.0/this.state.questions.length);
         return(
             <View style={styles.container}>
                 <Text style={styles.titleWithPadding}>{`Your score: ${percentage}%`}</Text>

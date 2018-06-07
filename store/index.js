@@ -1,10 +1,23 @@
 import { createStore } from 'redux';
 import reducer from '../reducers';
-import initialState from './initialState';
+import { saveState } from "../utils/api";
 
-const store = createStore(
-    reducer,
-    initialState
-);
+const configStore = (initialState) => {
 
-export default store;
+    const store = createStore(
+        reducer,
+        initialState
+    );
+
+    store.subscribe(() => {
+        saveState(store.getState()).then(
+            () => {
+                console.log("Wrote the state to AsyncStorage!");
+            }
+        )
+    });
+
+    return store;
+};
+
+export default configStore;

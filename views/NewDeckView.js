@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Button, TextInput, Alert } from 'react-native'
+import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addDeck } from "../actions/actionCreators";
-import styles from '../components/styles';
+import styles from '../utils/styles';
 import randomString from 'random-string';
 import camelCase from 'camel-case';
 

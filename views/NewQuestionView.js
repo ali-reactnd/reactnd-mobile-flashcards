@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Button, TextInput } from 'react-native'
+import { View, Text, Button, TextInput } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addCard } from "../actions/actionCreators";
-import styles from '../components/styles';
+import styles from '../utils/styles';
 
 class NewQuestionView extends React.Component{
 

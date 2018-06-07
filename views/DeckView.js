@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, Text, Button } from 'react-native';
 import { connect } from "react-redux";
-import styles from '../components/styles';
+import styles from '../utils/styles';
 
 const DeckView = (props) => {
 

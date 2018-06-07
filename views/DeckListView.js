@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native'
+import { View, Text, TouchableOpacity, Button } from 'react-native';
 import { connect } from "react-redux";
-import styles from '../components/styles';
+import styles from '../utils/styles';
 
 const DeckListView = (props) => {
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Button} from 'react-native'
-import {connect} from "react-redux";
-import styles from '../components/styles';
-import { clearLocalNotification, setLocalNotification } from "../components/Notification";
+import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { connect } from "react-redux";
+import styles from '../utils/styles';
+import { clearLocalNotification, setLocalNotification } from "../utils/notification";
 
 class QuizView extends React.Component {
 

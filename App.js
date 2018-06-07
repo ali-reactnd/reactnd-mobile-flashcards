@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 import { Provider } from 'react-redux';
 import store from './store';
 import Views from './views';
-import { setLocalNotification } from "./components/Notification";
+import { setLocalNotification } from "./utils/notification";
 import { loadState } from "./utils/api";
 import initialState from './store/initialState';
 

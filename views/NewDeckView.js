@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addDeck } from "../actions/actionCreators";
 import styles from '../components/styles';
+import randomString from 'random-string';
+import camelCase from 'camel-case';
 
 class NewDeckView extends React.Component{
 
@@ -12,7 +14,7 @@ class NewDeckView extends React.Component{
     }
 
     isTitleValid = (title) => {
-        return !title || !title.trim();
+        return title && title.trim();
     }
 
     displayAlert = () => {
@@ -28,14 +30,19 @@ class NewDeckView extends React.Component{
         )
     }
 
+    generateKey = (title) => {
+        let key = camelCase(title);
+        let unique = randomString({length: 4});
+        return key + "_" + unique;
+    }
+
     handleSubmit = () => {
-        // TODO: key must be a camel-case version of title with no spaces.
         let title = this.state.title;
         if (!this.isTitleValid(title)){
             this.displayAlert();
             return;
         }
-        let key = this.state.title;
+        let key = this.generateKey(title);
         this.props.addDeck(title, key);
         this.props.navigation.navigate('DeckView', {key: key, title: title});
     }
